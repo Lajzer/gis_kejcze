@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title>{% block title %} {% endblock title %}</title>
+    {% block head_favicon %}
+
+    {% endblock head_favicon %}
+    {% block head_meta %}
+        {% block head_meta_charset %}
+            <meta charset="utf-8">
+        {% endblock head_meta_charset %}
+        {% block head_meta_viewport %}
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% endblock head_meta_viewport %}
+    {% endblock head_meta %}
+    <!-- Load static CSS files -->
+    {% load static %}
+    {% block head_css %}
+        {% block head_css_site %}
+            <link rel="stylesheet" href="{% static 'styles.css' %}">
+        {% endblock head_css_site %}
+        {% block head_css_section %} {% endblock head_css_section %}
+        {% block head_css_page %} {% endblock head_css_page %}
+    {% endblock head_css %}
+</head>
+<body>
+{% block body %}
+<div class="header">
+</div>
+{% if user.is_authenticated %}
+    <div class="top" style="display: table!important; position:fixed; width: 100%; left: 0px; top: 0px; text-align: center; border-bottom: 1px solid #B7C5D9; z-index: 3; background-color: #D6DAF0; border:color: #B7C5D9">
+        <div class="navigation">
+            <span class="sub">[<a href={% url 'index' %}>Index</a>]</span>
+            <span class="sub">[<a href={% url 'logout' %}>Logout</a>]</span>
+            <span class="sub">[<a href={% url 'index' %}>Profile</a>]</span>
+        </div>
+    </div>
+{% endif %}
+<div class="content" style="margin-top: 20px">
+    {% block content %} {% endblock content %}
+</div>
+{% endblock body %}
+</body>
+</html>
+
