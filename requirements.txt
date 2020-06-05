@@ -1,5 +1,5 @@
 asgiref==3.2.3
-Django==3.0.3
+Django==3.0.7
 django-multiselectfield==0.1.11
 GDAL==3.0.0
 numpy==1.18.1
